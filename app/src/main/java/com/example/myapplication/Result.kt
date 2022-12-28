@@ -11,9 +11,9 @@ class Result : AppCompatActivity() {
 
         val tx_result = findViewById<TextView>(R.id.textView5)
         val name = intent.getStringExtra("content")
-        val artical = intent.getStringExtra("articalTXTSS")
+        val artical = intent.getStringExtra("articalTXT")
 
-        tx_result.text = "60秒內輸入的文字:$name\n處理用名稱為content\n\n原始文章內容為:$artical\n處理用名稱為artical"
+        tx_result.text = "60秒內輸入的文字:$name\n處理用名稱為content\n\n原始文章內容為:$artical\n處理用名稱為articalTXT"
 
     }
 }
