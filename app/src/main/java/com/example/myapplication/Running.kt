@@ -19,19 +19,15 @@ class Running : AppCompatActivity() {
         val ed_gt = findViewById<EditText>(R.id.editTextTextPersonName)
         val btn_send = findViewById<Button>(R.id.btn_send)
         val tx_time = findViewById<TextView>(R.id.tx_time)
-
-
         val countDownTimer:CountDownTimer
         var countDT: Long = 61000
         var countIl: Long = 1000
-
         var substr = ""
-
         val btch = intent.getStringExtra("btCH")
 
 
-////////////要顯示的文章
-        val sh1 = "1"
+        //要顯示的文章
+        val sh1 = "123456789123456789"
         val sh2 = "2"
         val sh3 = "3"
         val sh4 = "4"
@@ -40,9 +36,6 @@ class Running : AppCompatActivity() {
         val sh7 = "7"
         val sh8 = "8"
         val sh9 = "9"
-//
-
-
 
         if(status_ch == true){
             val intent = Intent(this, MainActivity::class.java)
@@ -79,17 +72,15 @@ class Running : AppCompatActivity() {
                 substr = sh9
                 tx_show.text = sh9}
 
-
-
-
-            countDownTimer = object : CountDownTimer(countDT,countIl){
-                override fun onTick(p0: Long) {
+            countDownTimer = object : CountDownTimer(countDT,countIl)
+            {
+                override fun onTick(p0: Long)
+                {
                     tx_time.text = (p0/1000).toString()
-
-
                 }
 
-                override fun onFinish() {
+                override fun onFinish()
+                {
                     tx_time.text = ""
                     status_ch = true
                     resetPr(substr)
@@ -99,33 +90,27 @@ class Running : AppCompatActivity() {
             countDownTimer.start()
 
             btn_send.setOnClickListener({
-
                 countDownTimer.cancel()
                 status_ch = true
                 resetPr(substr)
             })
         }
-
-
-
-
     }
 
-
-    private fun resetPr(str:String){
+    private fun resetPr(str:String)
+     {
         val ed_gt = findViewById<EditText>(R.id.editTextTextPersonName)
         val tx_show = findViewById<TextView>(R.id.textView)
         val tx_time = findViewById<TextView>(R.id.tx_time)
         val intent = Intent(this, Result::class.java)
         val intext = ed_gt.text.toString()
+         val time = tx_time.text.toString()
         intent.putExtra("content",intext)
-        intent.putExtra("articalTXT",str)
+        intent.putExtra("articleTXT",str)
+         intent.putExtra("time", time)
         ed_gt.text.clear()
         tx_show.text = ""
         tx_time.text = ""
-
-
-
         startActivity(intent)
     }
 
